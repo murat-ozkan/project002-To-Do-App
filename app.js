@@ -2,16 +2,22 @@ let list = document.getElementById("task-list");
 function addItem() {
   let getText = document.getElementById("input-task-text").value; // get task as text
   let newItem = document.createElement("li"); // create element
-  newItem.innerHTML += `<input type="checkbox" id="task-tick" value="Task 1">
-  <input type="text" id="task-text" placeholder="${getText}" readonly>`;
+  newItem.innerHTML += `<div id="list-item"><input type="checkbox" id="task-tick" value="Task 1">
+  <input type="text" id="task-text" placeholder="${getText}" readonly></div>`;
   list.appendChild(newItem);
-
-  //   checkText.setAttribute("type", "checkbox");
-  //   let entry = document.createElement("li");
-  //   entry.appendChild(document.createTextNode(getText));
-  //   list.appendChild(entry);
-  //   list.appendChild(document.createElement("br"));
+  document.getElementById("input-task-text").value = "";
 }
+
+function removeItem() {
+  let item = document.getElementById("list-item");
+  item.remove();
+}
+
+//   checkText.setAttribute("type", "checkbox");
+//   let entry = document.createElement("li");
+//   entry.appendChild(document.createTextNode(getText));
+//   list.appendChild(entry);
+//   list.appendChild(document.createElement("br"));
 
 // const newPar = document.createElement("p");
 // const text = document.createTextNode("Bu bir p elementidir.");
