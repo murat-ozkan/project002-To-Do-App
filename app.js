@@ -2,6 +2,10 @@ let list = document.getElementById("task-list");
 let itemId = 001;
 
 function addItem() {
+  if (document.getElementById("input-task-text").value.trim() === "") {
+    alert("Please, enter new todo text!");
+    return;
+  }
   let getText = document.getElementById("input-task-text").value; // get task as text
   let newItem = document.createElement("div"); // create element
   newItem.innerHTML += `<div id="list-item-${itemId}">
@@ -31,11 +35,28 @@ function removeItem(event) {
 
 function changeStatus(event) {
   let itemId = event.currentTarget.id;
+  let itemValue = event.currentTarget.value;
   console.log(itemId);
   console.log(document.getElementById(itemId).className);
-  if (document.getElementById(itemId).className == "gray") {
-    document.getElementById(itemId).className = "green";
-  } else if (document.getElementById(itemId).className == "green") {
-    document.getElementById(itemId).className = "gray";
+
+  if (itemValue === "Done") {
+    let nextItemId = itemId.replace("done", "undone");
+    if (document.getElementById(itemId).className == "gray") {
+      document.getElementById(itemId).className = "orange";
+      document.getElementById(nextItemId).className = "gray";
+    } else if (document.getElementById(itemId).className == "orange") {
+      document.getElementById(itemId).className = "gray";
+      document.getElementById(nextItemId).className = "orange";
+    }
+  }
+  if (itemValue === "Undone") {
+    let nextItemId = itemId.replace("undone", "done");
+    if (document.getElementById(itemId).className == "gray") {
+      document.getElementById(itemId).className = "orange";
+      document.getElementById(nextItemId).className = "gray";
+    } else if (document.getElementById(itemId).className == "orange") {
+      document.getElementById(itemId).className = "gray";
+      document.getElementById(nextItemId).className = "orange";
+    }
   }
 }
