@@ -1,42 +1,41 @@
 let list = document.getElementById("task-list");
+let itemId = 001;
+
 function addItem() {
   let getText = document.getElementById("input-task-text").value; // get task as text
-  let newItem = document.createElement("li"); // create element
-  newItem.innerHTML += `<div id="list-item"><input type="checkbox" id="task-tick" value="Task 1">
-  <input type="text" id="task-text" placeholder="${getText}" readonly></div>`;
+  let newItem = document.createElement("div"); // create element
+  newItem.innerHTML += `<div id="list-item-${itemId}">
+  <input type="text" id="task-text" placeholder="${getText}" readonly />
+  <input type="button" class="gray" id="done-${itemId}" value="Done" onclick="changeStatus(event)"/>
+  <input type="button" class="orange" id="undone-${itemId}" value="Undone" onclick="changeStatus(event)"/>
+  //
+  <input
+    type="button"
+    class="orange"
+    id="remove-${itemId}"
+    value="Remove"
+    onclick="removeItem(event)"
+  />
+</div>`;
+  itemId++;
   list.appendChild(newItem);
   document.getElementById("input-task-text").value = "";
 }
 
-function removeItem() {
-  let item = document.getElementById("list-item");
+function removeItem(event) {
+  let itemId = event.currentTarget.id;
+  let listItemToDelete = itemId.replace("remove", "list-item");
+  let item = document.getElementById(listItemToDelete);
   item.remove();
 }
 
-//   checkText.setAttribute("type", "checkbox");
-//   let entry = document.createElement("li");
-//   entry.appendChild(document.createTextNode(getText));
-//   list.appendChild(entry);
-//   list.appendChild(document.createElement("br"));
-
-// const newPar = document.createElement("p");
-// const text = document.createTextNode("Bu bir p elementidir.");
-// newPar.appendChild(text);
-
-// document.getElementById("input-task-add").addEventListener("click", () => {
-//   let newTask = document.getElementById("input-task-text").value;
-//   let textnode = document.createTextNode(newTask);
-//   document.getElementById("task-list").appendChild(textnode);
-//   let solo = document.createElement("div");
-//   solo.innerHTML =
-//     '<div class="task-list" id="task-list"> <input type="checkbox" id="task-tick" value="Task 1"><input type="text" id="task-text" placeholder="Task-1: Work Hard..." readonly></div>';
-// });
-// document.getElementById("input-task-add").addEventListener("click", () => {
-//   let newTask = document.getElementById("input-task-text").value;
-//   console.log(newTask);
-//   let textnode = document.createTextNode(newTask)
-//   document.getElementById("task-list").appendChild(textnode);
-// })
-
-// <!-- <input type="checkbox" id="task-tick" value="Task 1">
-// <input type="text" id="task-text" placeholder="Task-1: Work Hard..." readonly> -->
+function changeStatus(event) {
+  let itemId = event.currentTarget.id;
+  console.log(itemId);
+  console.log(document.getElementById(itemId).className);
+  if (document.getElementById(itemId).className == "gray") {
+    document.getElementById(itemId).className = "green";
+  } else if (document.getElementById(itemId).className == "green") {
+    document.getElementById(itemId).className = "gray";
+  }
+}

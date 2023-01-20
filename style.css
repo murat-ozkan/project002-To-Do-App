@@ -77,12 +77,11 @@ hr {
   border-radius: 3rem;
 }
 #task-text {
-  margin: 1rem;
+  margin: 0.3rem;
   border-radius: 0.5rem;
   height: 2rem;
   font-size: larger;
   padding: 0.5rem;
-  border: 1px solid blue;
   text-align: left;
   width: 350px;
 }
@@ -107,19 +106,32 @@ hr {
   margin: 0.3rem;
 }
 
-#done,
-#undone,
-#remove {
+.gray {
+  background-color: #9fa190;
   width: 55px;
   border: 1px solid wheat;
+  height: 1.5rem;
+  border-radius: 0.5rem;
 }
-#done {
-  background-color: #9fa190;
-}
-#undone {
+.orange {
   background-color: #f0941f;
+  width: 55px;
+  border: 1px solid wheat;
+  height: 1.5rem;
+  border-radius: 0.5rem;
 }
-#remove {
+input[id^="remove"] {
   background-color: #ef6024;
   color: black;
+  width: 55px;
+  border: 1px solid wheat;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+}
+.green {
+    background-color:#196774;
+    width: 55px;
+    border: 1px solid wheat;
+    height: 1.5rem;
+    border-radius: 0.5rem;  
 }
