@@ -1,9 +1,9 @@
 let list = document.getElementById("task-list");
-let itemId = 001;
+let itemId = 0;
 
 function addItem() {
   if (document.getElementById("input-task-text").value.trim() === "") {
-    alert("Please, enter new todo text!");
+    alert("Please, enter a new task!");
     return;
   }
   let getText = document.getElementById("input-task-text").value; // get task as text
@@ -36,9 +36,6 @@ function removeItem(event) {
 function changeStatus(event) {
   let itemId = event.currentTarget.id;
   let itemValue = event.currentTarget.value;
-  console.log(itemId);
-  console.log(document.getElementById(itemId).className);
-
   if (itemValue === "Done") {
     let nextItemId = itemId.replace("done", "undone");
     if (document.getElementById(itemId).className == "gray") {
