@@ -36,24 +36,26 @@ function removeItem(event) {
 function changeStatus(event) {
   let itemId = event.currentTarget.id;
   let itemValue = event.currentTarget.value;
+  let theItem = document.getElementById(itemId);
+  let theNextItem = document.getElementById(nextItemId);
   if (itemValue === "Done") {
     let nextItemId = itemId.replace("done", "undone");
-    if (document.getElementById(itemId).className == "gray") {
-      document.getElementById(itemId).className = "orange";
-      document.getElementById(nextItemId).className = "gray";
-    } else if (document.getElementById(itemId).className == "orange") {
-      document.getElementById(itemId).className = "gray";
-      document.getElementById(nextItemId).className = "orange";
+    if (theItem.className == "gray") {
+      theItem.className = "orange";
+      theNextItem.className = "gray";
+    } else if (theItem.className == "orange") {
+      theItem.className = "gray";
+      theNextItem.className = "orange";
     }
   }
   if (itemValue === "Undone") {
     let nextItemId = itemId.replace("undone", "done");
-    if (document.getElementById(itemId).className == "gray") {
-      document.getElementById(itemId).className = "orange";
-      document.getElementById(nextItemId).className = "gray";
-    } else if (document.getElementById(itemId).className == "orange") {
-      document.getElementById(itemId).className = "gray";
-      document.getElementById(nextItemId).className = "orange";
+    if (theItem.className == "gray") {
+      theItem.className = "orange";
+      theNextItem.className = "gray";
+    } else if (theItem.className == "orange") {
+      theItem.className = "gray";
+      theNextItem.className = "orange";
     }
   }
 }
